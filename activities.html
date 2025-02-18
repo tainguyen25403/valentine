@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activities</title>
+    <link rel="stylesheet" href="css/activities.css" />
+  </head>
+  <body>
+    <script>
+      // Kiểm tra referrer
+      if (
+        document.referrer === "" ||
+        !document.referrer.includes("dessert.html") ||
+        performance.navigation.type === 1 ||
+        window.performance.getEntriesByType("navigation")[0].type === "reload"
+      ) {
+        window.location.href = "index.html"; // Chuyển hướng về trang chính
+      }
+    </script>
+    <iframe src="player.html" style="display: none"></iframe>
+    <div id="activityquestion"><b>What are we doing after?</b></div>
+    <div class="activities-selection">
+      <div class="activity-item">
+        <img src="assets/activities/aquarium.jpeg" alt="aquarium" />
+        <label
+          ><input
+            type="checkbox"
+            name="activities"
+            value="aquarium"
+          />aquarium</label
+        >
+      </div>
+      <div class="activity-item">
+        <img src="/assets/activities/arcade.jpeg" alt="arcade" />
+        <label
+          ><input
+            type="checkbox"
+            name="activities"
+            value="arcade"
+          />arcade</label
+        >
+      </div>
+      <div class="activity-item">
+        <img src="/assets/activities/cinema.jpeg" alt="cinema" />
+        <label
+          ><input
+            type="checkbox"
+            name="activities"
+            value="cinema"
+          />cinema</label
+        >
+      </div>
+      <div class="activity-item">
+        <img src="/assets/activities/keramika.jpeg" alt="ceramics" />
+        <label
+          ><input
+            type="checkbox"
+            name="activities"
+            value="ceramics"
+          />ceramics</label
+        >
+      </div>
+      <div class="activity-item">
+        <img src="/assets/activities/kunsthalle.jpeg" alt="kunsthalle" />
+        <label
+          ><input
+            type="checkbox"
+            name="activities"
+            value="exhibition"
+          />exhibition</label
+        >
+      </div>
+      <div class="activity-item">
+        <img src="/assets/activities/park.jpeg" alt="park.jpeg" />
+        <label
+          ><input type="checkbox" name="activities" value="park" />park</label
+        >
+      </div>
+    </div>
+    <button class="button" onclick="location.href='lastpage.html'">
+      Last page
+    </button>
+    <script>
+      document.querySelector(".button").addEventListener("click", function () {
+        let selectedActivities = Array.from(
+          document.querySelectorAll('input[name="activities"]:checked')
+        ).map((input) => input.value);
+
+        localStorage.setItem(
+          "selectedActivities",
+          JSON.stringify(selectedActivities)
+        );
+
+        // Chuyển sang lastpage.html
+        location.href = "lastpage.html";
+      });
+    </script>
+  </body>
+</html>

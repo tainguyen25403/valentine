@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+    <link rel="stylesheet" href="css/date.css" />
+  </head>
+  <body>
+    <script>
+      // Kiểm tra referrer
+      if (
+        document.referrer === "" ||
+        !document.referrer.includes("thankyou.html") ||
+        performance.navigation.type === 1 ||
+        window.performance.getEntriesByType("navigation")[0].type === "reload"
+      ) {
+        window.location.href = "index.html"; // Chuyển hướng về trang chính
+      }
+    </script>
+
+    <iframe src="player.html" style="display: none"></iframe>
+
+    <h1 title="choose a date">Are you free on ...</h1>
+
+    <form id="dateForm" class="form-group">
+      <label>Which day: (select a date)</label>
+      <div>
+        <input type="date" id="selectedDate" required />
+        <button class="button" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("dateForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+          let selectedDate = document.getElementById("selectedDate").value;
+
+          if (!selectedDate) {
+            alert("Please select a date!");
+            return;
+          }
+
+          localStorage.setItem("selectedDate", selectedDate);
+
+          // Chuyển trang tiếp theo
+          location.href = "food.html";
+        });
+    </script>
+  </body>
+</html>

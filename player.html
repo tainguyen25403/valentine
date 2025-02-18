@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player</title>
+    <link rel="stylesheet" href="css/lastpage.css" />
+  </head>
+  <body>
+    <audio id="audioPlayer" controls autoplay loop>
+      <source src="assets/audio/sugar.mp3" type="audio/mpeg" />
+      Trình duyệt của bạn không hỗ trợ thẻ audio.
+    </audio>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var audioPlayer = document.getElementById("audioPlayer");
+
+        // Lấy thời gian lưu trữ trước đó (nếu có)
+        var savedTime = localStorage.getItem("audioCurrentTime");
+        var isPlaying = localStorage.getItem("isPlaying") === "true";
+
+        if (savedTime) {
+          audioPlayer.currentTime = parseFloat(savedTime);
+        }
+
+        if (isPlaying) {
+          audioPlayer.play();
+        }
+
+        // Cập nhật thời gian khi bài hát đang phát
+        audioPlayer.addEventListener("timeupdate", function () {
+          localStorage.setItem("audioCurrentTime", audioPlayer.currentTime);
+        });
+
+        // Lưu trạng thái phát nhạc khi trang thay đổi
+        window.addEventListener("beforeunload", function () {
+          localStorage.setItem("audioCurrentTime", audioPlayer.currentTime);
+          localStorage.setItem("isPlaying", !audioPlayer.paused);
+        });
+      });
+    </script>
+  </body>
+</html>

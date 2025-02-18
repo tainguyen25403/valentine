@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessert</title>
+    <link rel="stylesheet" href="css/dessert.css" />
+  </head>
+  <body>
+    <script>
+      // Kiểm tra referrer
+      if (
+        document.referrer === "" ||
+        !document.referrer.includes("food.html") ||
+        performance.navigation.type === 1 ||
+        window.performance.getEntriesByType("navigation")[0].type === "reload"
+      ) {
+        window.location.href = "valentine.html"; // Chuyển hướng về trang chính
+      }
+    </script>
+    <iframe src="player.html" style="display: none"></iframe>
+    <div id="dessertquestion">Which dessert we eatin cuh</div>
+
+    <div class="dessert-selection">
+      <div class="dessert-item">
+        <img src="assets/food/boba.jpeg" alt="boba" />
+        <label
+          ><input type="checkbox" name="dessert" value="boba" /> boba</label
+        >
+      </div>
+      <div class="dessert-item">
+        <img src="assets/food/churro.jpeg" alt="churro" />
+        <label
+          ><input type="checkbox" name="dessert" value="churro" /> churro</label
+        >
+      </div>
+      <div class="dessert-item">
+        <img src="assets/food/che.jpeg" alt="che" />
+        <label><input type="checkbox" name="dessert" value="che" /> che</label>
+      </div>
+      <div class="dessert-item">
+        <img src="assets/food/mochi.jpeg" alt="mochi" />
+        <label
+          ><input type="checkbox" name="dessert" value="mochi" /> mochi</label
+        >
+      </div>
+      <div class="dessert-item">
+        <img src="assets/food/randombun.jpeg" alt="randombun" />
+        <label
+          ><input type="checkbox" name="dessert" value="randombun" /> random
+          bun</label
+        >
+      </div>
+      <div class="dessert-item">
+        <img src="assets/food/taiyaki.jpeg" alt="taiyaki" />
+        <label
+          ><input type="checkbox" name="dessert" value="taiyaki" />
+          taiyaki</label
+        >
+      </div>
+    </div>
+    <button class="button" onclick="location.href='activities.html'">
+      Continue UWU
+    </button>
+    <script>
+      document.querySelector(".button").addEventListener("click", function () {
+        let selectedDesserts = Array.from(
+          document.querySelectorAll('input[name="dessert"]:checked')
+        ).map((input) => input.value);
+
+        localStorage.setItem(
+          "selectedDesserts",
+          JSON.stringify(selectedDesserts)
+        );
+
+        // Chuyển sang activities.html
+        location.href = "activities.html";
+      });
+    </script>
+  </body>
+</html>

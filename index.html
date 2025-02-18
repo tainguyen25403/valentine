@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine</title>
+    <link rel="stylesheet" href="css/valentine.css" />
+  </head>
+  <body>
+    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
+    <button class="answerButton" onclick="location.href='thankyou.html'">
+      Yes
+    </button>
+    <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+    <br />
+    <img
+      id="gifs"
+      src="assets/gifs/rabbit.gif"
+      alt="cat asking question"
+      class="responsive"
+    />
+
+    <script>
+      var textIndex = 0;
+      document
+        .getElementById("noButton")
+        .addEventListener("click", function () {
+          var yesButton = document.querySelector(
+            'button[onclick*="thankyou.html"]'
+          );
+          var currentYesFontSize = parseInt(
+            window.getComputedStyle(yesButton).fontSize
+          );
+          yesButton.style.fontSize = currentYesFontSize + 10 + "px";
+          var noTexts = [
+            "Nooo (╯°□°）╯︵ ┻━┻",
+            "Please don't (T_T)",
+            "Why u do dis? (ಥ﹏ಥ)",
+            "I'm begging you! (╥﹏╥)",
+            "Fine, I give up... (；⌣̀_⌣́)",
+          ];
+          var gif = document.getElementById("gifs");
+          var srcGif = [
+            "assets/gifs/cat.gif",
+            "assets/gifs/bluesbear.gif",
+            "assets/gifs/SadCry.gif",
+            "assets/gifs/why.gif",
+            "assets/gifs/cat.gif",
+            "assets/gifs/pompom-pompomfriends.gif",
+            "assets/gifs/bunny-dancing.gif",
+          ];
+          if (textIndex <= noTexts.length) {
+            noButton.textContent = noTexts[textIndex];
+            textIndex = textIndex + 1;
+            noButton.style.fontSize =
+              parseInt(window.getComputedStyle(noButton).fontSize) - 2 + "px";
+            gif.src = srcGif[textIndex];
+          }
+          if (textIndex > noTexts.length) {
+            noButton.remove();
+            yesButton.style.fontSize = currentYesFontSize + 100 + "px";
+          }
+        });
+      document.addEventListener("DOMContentLoaded", function () {
+        var audioPlayer = document.getElementById("audioPlayer");
+
+        // Xóa trạng thái trước đó để bài hát phát từ đầu
+        localStorage.removeItem("audioCurrentTime");
+        localStorage.removeItem("isPlaying");
+
+        // Lưu trạng thái khi người dùng rời khỏi trang
+        window.addEventListener("beforeunload", function () {
+          localStorage.setItem("audioCurrentTime", audioPlayer.currentTime);
+          localStorage.setItem("isPlaying", !audioPlayer.paused);
+        });
+      });
+    </script>
+  </body>
+</html>
