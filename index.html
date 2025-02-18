@@ -41,21 +41,27 @@
             "Fine, I give up... (；⌣̀_⌣́)",
           ];
           var gif = document.getElementById("gifs");
-          var srcGif = [
-            "assets/gifs/cat.gif",
-            "assets/gifs/bluesbear.gif",
-            "assets/gifs/SadCry.gif",
-            "assets/gifs/why.gif",
-            "assets/gifs/cat.gif",
-            "assets/gifs/pompom-pompomfriends.gif",
-            "assets/gifs/bunny-dancing.gif",
-          ];
+          var gifPaths = [
+        "assets/gifs/cat.gif",
+        "assets/gifs/bluesbear.gif",
+        "assets/gifs/SadCry.gif",
+        "assets/gifs/why.gif",
+        "assets/gifs/cat.gif",
+        "assets/gifs/pompom-pompomfriends.gif",
+        "assets/gifs/bunny-dancing.gif",
+      ];
+
+      var preloadedGifs = [];
+      for (var i = 0; i < gifPaths.length; i++) {
+        preloadedGifs[i] = new Image();
+        preloadedGifs[i].src = gifPaths[i];
+      }
           if (textIndex <= noTexts.length) {
             noButton.textContent = noTexts[textIndex];
             textIndex = textIndex + 1;
             noButton.style.fontSize =
               parseInt(window.getComputedStyle(noButton).fontSize) - 2 + "px";
-            gif.src = srcGif[textIndex];
+            gif.src = preloadedGifs[textIndex].src;
           }
           if (textIndex > noTexts.length) {
             noButton.remove();
