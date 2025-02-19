@@ -23,6 +23,22 @@
 
     <script>
       var textIndex = 0;
+      var gif = document.getElementById("gifs");
+      var gifPaths = [
+        "assets/gifs/cat.gif",
+        "assets/gifs/bluesbear.gif",
+        "assets/gifs/SadCry.gif",
+        "assets/gifs/why.gif",
+        "assets/gifs/cat.gif",
+        "assets/gifs/pompom-pompomfriends.gif",
+        "assets/gifs/bunny-dancing.gif",
+      ];
+
+      var preloadedGifs = [];
+      for (var i = 0; i < gifPaths.length; i++) {
+        preloadedGifs[i] = new Image();
+        preloadedGifs[i].src = gifPaths[i];
+      }
       document
         .getElementById("noButton")
         .addEventListener("click", function () {
@@ -40,22 +56,6 @@
             "I'm begging you! (╥﹏╥)",
             "Fine, I give up... (；⌣̀_⌣́)",
           ];
-          var gif = document.getElementById("gifs");
-          var gifPaths = [
-        "assets/gifs/cat.gif",
-        "assets/gifs/bluesbear.gif",
-        "assets/gifs/SadCry.gif",
-        "assets/gifs/why.gif",
-        "assets/gifs/cat.gif",
-        "assets/gifs/pompom-pompomfriends.gif",
-        "assets/gifs/bunny-dancing.gif",
-      ];
-
-      var preloadedGifs = [];
-      for (var i = 0; i < gifPaths.length; i++) {
-        preloadedGifs[i] = new Image();
-        preloadedGifs[i].src = gifPaths[i];
-      }
           if (textIndex <= noTexts.length) {
             noButton.textContent = noTexts[textIndex];
             textIndex = textIndex + 1;
