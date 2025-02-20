@@ -9,13 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   </head>
   <body>
-    <div id="passwordContainer">
+    <div id="passwordWrapper">
       <h2>Enter Password to Access</h2>
-      <input type="password" id="passwordInput" placeholder="Enter Password" />
-      <button id="submitPassword">Submit</button>
-      <p id="errorMessage" style="color: red; display: none">
-        Wrong password! Try again.
-      </p>
+      <div id="passwordContainer">
+        <textarea id="passwordInput" rows="2"></textarea>
+        <button id="submitPassword">Submit</button>
+      </div>
+      <p id="errorMessage">Wrong password! Try again.</p>
     </div>
 
     <div id="content" style="display: none">
@@ -53,9 +53,12 @@
               if (data.valid) {
                 document.getElementById("passwordContainer").style.display =
                   "none";
+                document.getElementById("passwordContainer").style.visibility =
+                  "hidden";
                 document.getElementById("content").style.display = "block";
               } else {
-                document.getElementById("errorMessage").style.display = "block";
+                document.getElementById("errorMessage").style.visibility =
+                  "visible";
               }
             })
             .catch((error) => console.error("Error:", error));

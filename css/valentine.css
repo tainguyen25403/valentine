@@ -40,3 +40,83 @@ img {
   border: 2px solid #ff9494;
   box-shadow: 1px 1px 2px #ffe3e1;
 }
+
+/* Container tổng */
+#passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa nội dung */
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Tiêu đề */
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Container chứa ô nhập và nút */
+#passwordContainer {
+  display: flex;
+  flex-direction: row; /* Ban đầu xếp theo hàng ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  gap: 10px; /* Khoảng cách giữa ô nhập và nút */
+  width: 100%;
+  max-width: 400px; /* Giới hạn chiều rộng */
+}
+
+/* Ô nhập mật khẩu */
+#passwordInput {
+  flex: 1; /* Cho phép ô nhập mở rộng */
+  min-width: 200px;
+  height: 40px; /* Để đồng bộ với nút */
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #ff5e6c;
+  text-align: left;
+  resize: none;
+  overflow-y: hidden;
+}
+
+/* Nút Submit */
+#submitPassword {
+  font-size: 16px;
+  padding: 10px 20px; /* Tăng padding để dễ bấm */
+  border-radius: 8px;
+  border: none;
+  background-color: #ff5e6c;
+  color: white;
+  cursor: pointer;
+  height: 40px; /* Cùng chiều cao với ô nhập */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#submitPassword:hover {
+  background-color: #e04b58;
+}
+
+/* Thông báo lỗi */
+#errorMessage {
+  font-size: 16px;
+  color: red;
+  visibility: hidden;
+  margin-top: 10px;
+}
+
+/* Nếu màn hình nhỏ (điện thoại), đổi sang hiển thị theo chiều dọc */
+@media (max-width: 450px) {
+  #passwordContainer {
+    flex-direction: column; /* Chuyển sang dạng dọc */
+    gap: 10px;
+  }
+
+  #passwordInput,
+  #submitPassword {
+    width: 90%; /* Chiếm toàn bộ chiều rộng */
+  }
+}
