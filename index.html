@@ -6,22 +6,60 @@
     <title>Be My Valentine</title>
     <link rel="icon" type="image/x-icon" href="assets/hihi.ico" />
     <link rel="stylesheet" href="css/valentine.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   </head>
   <body>
-    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
-      Yes
-    </button>
-    <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
-    <br />
-    <img
-      id="gifs"
-      src="assets/gifs/rabbit.gif"
-      alt="cat asking question"
-      class="responsive"
-    />
+    <div id="passwordContainer">
+      <h2>Enter Password to Access</h2>
+      <input type="password" id="passwordInput" placeholder="Enter Password" />
+      <button id="submitPassword">Submit</button>
+      <p id="errorMessage" style="color: red; display: none">
+        Wrong password! Try again.
+      </p>
+    </div>
+
+    <div id="content" style="display: none">
+      <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
+      <button class="answerButton" onclick="location.href='thankyou.html'">
+        Yes
+      </button>
+      <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+      <br />
+      <img
+        id="gifs"
+        src="assets/gifs/rabbit.gif"
+        alt="cat asking question"
+        class="responsive"
+      />
+    </div>
 
     <script>
+      document
+        .getElementById("submitPassword")
+        .addEventListener("click", function () {
+          var password = document.getElementById("passwordInput").value;
+          var hashedPassword = CryptoJS.SHA256(password).toString();
+
+          // API giả định - Thay thế bằng API thực tế của bạn
+          fetch("https://server-ub2f.onrender.com/validate", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ password: hashedPassword }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.valid) {
+                document.getElementById("passwordContainer").style.display =
+                  "none";
+                document.getElementById("content").style.display = "block";
+              } else {
+                document.getElementById("errorMessage").style.display = "block";
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        });
       var textIndex = 0;
       var gif = document.getElementById("gifs");
       var gifPaths = [
