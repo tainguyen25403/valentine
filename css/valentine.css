@@ -72,7 +72,7 @@ h2 {
   flex: 1; /* Cho phép ô nhập mở rộng */
   min-width: 200px;
   height: 40px; /* Để đồng bộ với nút */
-  font-size: 16px;
+  font-size: 14px;
   padding: 8px;
   border-radius: 8px;
   border: 2px solid #ff5e6c;
