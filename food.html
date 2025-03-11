@@ -12,7 +12,7 @@
       // Kiểm tra referrer
       if (
         document.referrer === "" ||
-        !document.referrer.includes("date.html") ||
+        !document.referrer.includes("hangout.html") ||
         performance.navigation.type === 1 ||
         window.performance.getEntriesByType("navigation")[0].type === "reload"
       ) {
@@ -26,51 +26,39 @@
 
     <div class="food-selection">
       <div class="food-item">
-        <img
-          src="assets/food/burgers.jpeg"
-          alt="Burgers, fries and fried chicken"
-        />
+        <img src="assets/food/eu.png" alt="European cuisine" />
         <label
-          ><input
-            type="checkbox"
-            name="food"
-            value="Burgers, fries and fried chicken"
-          />
-          burgers and fried chicken</label
+          ><input type="checkbox" name="food" value="European cuisine" />
+          European cuisine</label
         >
       </div>
       <div class="food-item">
-        <img src="assets/food/dog.jpeg" alt="dog" />
+        <img src="assets/food/japan.png" alt="Japanese cuisine" />
         <label
-          ><input type="checkbox" name="food" value="hotdog" /> hotdog</label
+          ><input type="checkbox" name="food" value="Japanese cuisine" />
+          Japanese cuisine</label
         >
       </div>
       <div class="food-item">
-        <img src="assets/food/koreanfood.jpeg" alt="koreanfood" />
+        <img src="assets/food/koreanfood.jpeg" alt="Korean cuisine" />
         <label
-          ><input type="checkbox" name="food" value="Korean food" /> korean
-          food</label
+          ><input type="checkbox" name="food" value="Korean cuisine" /> Korean
+          cuisine</label
         >
       </div>
       <div class="food-item">
-        <img src="assets/food/pasta.jpeg" alt="pasta" />
-        <label><input type="checkbox" name="food" value="pasta" /> pasta</label>
+        <img src="assets/food/china.png" alt="Chinese cuisine" />
+        <label
+          ><input type="checkbox" name="food" value="Chinese cuisine" /> Chinese
+          cuisine</label
+        >
       </div>
       <div class="food-item">
-        <img src="assets/food/pizza.jpeg" alt="pizza" />
-        <label><input type="checkbox" name="food" value="pizza" /> pizza</label>
-      </div>
-      <div class="food-item">
-        <img src="assets/food/salad.jpeg" alt="salad" />
-        <label><input type="checkbox" name="food" value="salad" /> salad</label>
-      </div>
-      <div class="food-item">
-        <img src="assets/food/steak.jpeg" alt="steak" />
-        <label><input type="checkbox" name="food" value="steak" /> steak</label>
-      </div>
-      <div class="food-item">
-        <img src="assets/food/sushi.jpeg" alt="sushi" />
-        <label><input type="checkbox" name="food" value="sushi" /> sushi</label>
+        <img src="assets/food/eu.png" alt="Thai cuisine" />
+        <label
+          ><input type="checkbox" name="food" value="Thai cuisine" /> Thai
+          cuisine</label
+        >
       </div>
     </div>
     <button class="button" onclick="location.href='dessert.html'">

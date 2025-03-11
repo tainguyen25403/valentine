@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Selection</title>
+    <link rel="icon" type="image/x-icon" href="assets/hihi.ico" />
+    <link rel="stylesheet" href="css/food.css" />
+  </head>
+  <body>
+    <script>
+      // Kiểm tra referrer
+      // if (
+      //   document.referrer === "" ||
+      //   !document.referrer.includes("date.html") ||
+      //   performance.navigation.type === 1 ||
+      //   window.performance.getEntriesByType("navigation")[0].type === "reload"
+      // ) {
+      //   window.location.href = "index.html"; // Chuyển hướng về trang chính
+      // }
+    </script>
+    <iframe src="player.html" style="display: none"></iframe>
+    <div id="foodquestion">
+      <b>Where do you want to hang out?</b>
+    </div>
+
+    <div class="food-selection">
+      <div class="food-item">
+        <img src="assets/place/namcattien.png" alt="Nam Cat Tien" />
+        <label
+          ><input type="checkbox" name="place" value="Nam Cat Tien" /> Nam Cat
+          Tien</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="assets/place/vinwonder.png" alt="Vinwonder" />
+        <label
+          ><input type="checkbox" name="place" value="Vinwonder" />
+          Vinwonder</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="assets/place/pagoda.png" alt="Pagoda" />
+        <label
+          ><input type="checkbox" name="place" value="Pagoda" /> Pagoda</label
+        >
+      </div>
+    </div>
+    <button class="button" onclick="location.href='dessert.html'">
+      Continue UWU
+    </button>
+    <script>
+      document.querySelector(".button").addEventListener("click", function () {
+        let selectedPlaces = Array.from(
+          document.querySelectorAll('input[name="place"]:checked')
+        ).map((input) => input.value);
+
+        localStorage.setItem("selectedPlaces", JSON.stringify(selectedPlaces));
+
+        // Chuyển sang dessert.html
+        location.href = "food.html";
+      });
+    </script>
+  </body>
+</html>

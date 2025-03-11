@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Please donate!</title>
+    <link rel="icon" type="image/x-icon" href="assets/hihi.ico" />
+    <link rel="stylesheet" href="css/valentine.css" />
+    <link rel="stylesheet" href="css/dessert.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // Kiểm tra referrer
+      if (
+        document.referrer === "" ||
+        !document.referrer.includes("activities.html") ||
+        performance.navigation.type === 1 ||
+        window.performance.getEntriesByType("navigation")[0].type === "reload"
+      ) {
+        window.location.href = "index.html";
+      }
+    </script>
+    <audio id="audioPlayer" controls autoplay loop hidden>
+      <source src="assets/audio/donate.mp3" type="audio/mpeg" />
+    </audio>
+    <h1>Please donate!!!!!</h1>
+    <br />
+    <label for="amount">Donation amount(VNĐ):</label>
+    <input
+      type="number"
+      id="amount"
+      placeholder="Text"
+      step="100000"
+      min="200000"
+      value="200000"
+    />
+    <br /><br /><br />
+
+    <div id="qrcode">
+      <img id="qrImage" src="" alt="Mã QR sẽ hiển thị ở đây" />
+    </div>
+
+    <script>
+      function updateQR() {
+        var amount = document.getElementById("amount").value;
+        if (amount === "" || isNaN(amount) || amount < 200000) {
+          amount = 200000;
+        }
+
+        var bankCode = "ICB";
+        var accountNumber = "0777412175";
+        var template = "compact";
+        var description = "Gop tien vung dap hanh phuc.";
+
+        var qrURL = `https://img.vietqr.io/image/${bankCode}-${accountNumber}-${template}.png?amount=${amount}&addInfo=${encodeURIComponent(
+          description
+        )}&accountName=NguyenVanA`;
+
+        document.getElementById("qrImage").src = qrURL;
+      }
+
+      // Gọi hàm cập nhật ngay từ đầu (khởi động với 0đ)
+      updateQR();
+
+      // Lắng nghe sự kiện khi người dùng nhập số tiền
+      document.getElementById("amount").addEventListener("input", updateQR);
+    </script>
+    <br />
+    <br />
+    <button class="button" onclick="location.href='lastpage.html'">
+      Done!!!!
+    </button>
+  </body>
+</html>

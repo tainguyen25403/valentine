@@ -75,7 +75,7 @@
         // Nếu không có referrer hợp lệ, kiểm tra localStorage
         if (
           ((document.referrer === "" ||
-            !document.referrer.includes("activities.html")) &&
+            !document.referrer.includes("qr.html")) &&
             !localStorage.getItem("dataSubmitted")) ||
           performance.navigation.type === 1 ||
           window.performance.getEntriesByType("navigation")[0].type === "reload"
@@ -96,10 +96,14 @@
         let selectedActivities = JSON.parse(
           localStorage.getItem("selectedActivities") || "[]"
         );
+        let selectedPlaces = JSON.parse(
+          localStorage.getItem("selectedPlaces") || "[]"
+        );
 
         // Gửi dữ liệu lên server
         let finalData = {
           date: selectedDate,
+          place: selectedPlaces,
           food: selectedFoods,
           dessert: selectedDesserts,
           activities: selectedActivities,
@@ -123,8 +127,10 @@
             sessionStorage.setItem("submitted", "true");
 
             localStorage.removeItem("selectedDate");
+            localStorage.removeItem("selectedPlaces");
             localStorage.removeItem("selectedFoods");
             localStorage.removeItem("selectedDesserts");
+            localStorage.removeItem("selectedActivities");
             localStorage.removeItem("selectedActivities");
           })
           .catch((error) => {
